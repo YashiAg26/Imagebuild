@@ -50,10 +50,10 @@
         },
 		{
             "type": "Microsoft.Compute/galleries/images",
+			"apiVersion": "2021-10-01",
             "name": "[concat(parameters('galleries_galleryimage_name'), '/linuximg', )]",
-            "apiVersion": "2021-10-01",
-            "location": "UK SOUTH",
-	    "dependsOn": [
+            "location": "eastus",
+			"dependsOn": [
                 "[resourceId('Microsoft.Compute/galleries', parameters('galleries_galleryimage_name'))]"
             ],
             "properties": {
