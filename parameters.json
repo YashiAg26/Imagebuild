@@ -46,8 +46,9 @@
                         "max": 32
                     }
                 }
-            },
-            
+            }
+        },
+		{
             "type": "Microsoft.Compute/galleries/images",
             "name": "[concat(parameters('galleries_galleryimage_name'), '/linuximg', )]",
             "apiVersion": "2021-10-01",
@@ -73,6 +74,7 @@
                     }
                 },
             }
+			
 		}
     ]
 }
