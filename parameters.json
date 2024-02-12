@@ -1,51 +1,18 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "galleries_galleryimage_name": {
-            "type": "String"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Compute/galleries",
-            "apiVersion": "2022-03-03",
-            "name": "[parameters('galleries_galleryimage_name')]",
-            "location": "eastus",
-            "properties": {
-                "identifier": {}
-            }
+        "fileUris": {
+            "value": "https://firewallstg.blob.core.windows.net/firewallcontainer/DisableWindowsFirewall.ps1?sp=r&st=2024-02-12T09:44:04Z&se=2024-05-12T09:44:04Z&sv=2022-11-02&sr=b&sig=O%2Bcnpfc9J5Ne1Ao1FCO0Nya0mhoxaGk18UQVwArb1Vo%3D"
         },
-        {
-            "type": "Microsoft.Compute/galleries/images",
-            "apiVersion": "2022-03-03",
-            "name": "[concat(parameters('galleries_galleryimage_name'), '/img1')]",
-            "location": "eastus",
-            "dependsOn": [
-                "[resourceId('Microsoft.Compute/galleries', parameters('galleries_galleryimage_name'))]"
-            ],
-            "properties": {
-                "hyperVGeneration": "V1",
-                "architecture": "x64",
-                "osType": "Windows",
-                "osState": "Generalized",
-                "identifier": {
-                    "publisher": "windows",
-                    "offer": "offer1",
-                    "sku": "skuimge1"
-                },
-                "recommended": {
-                    "vCPUs": {
-                        "min": 1,
-                        "max": 16
-                    },
-                    "memory": {
-                        "min": 1,
-                        "max": 32
-                    }
-                }
-            }
+        "arguments": {
+            "value": null
+        },
+        "vmName": {
+            "value": "vm1"
+        },
+        "location": {
+            "value": "uksouth"
         }
-    ]
+    }
 }
