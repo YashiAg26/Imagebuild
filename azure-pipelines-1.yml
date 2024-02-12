@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  vm: 'vm2'
+
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
@@ -21,6 +24,7 @@ steps:
     templateLocation: 'Linked artifact'
     csmFile: 'template.json'
     csmParametersFile: 'parameters.json'
+    overrideParameters: -vmName $(vm)
     deploymentMode: 'Incremental'
 - task: AzureCLI@2
   inputs:
